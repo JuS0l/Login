@@ -28,7 +28,7 @@ namespace Login.Models
         [Display(Name = "Senha", Description = "Senha do Cliente")]
         public string Senha { get; set; }
         
-        [Display(Name = "Situação", Description = "Ativo ou Inativo")]
+        [Display(Name = "Situação", Description = "Ativo ou Inativo"), MaxLength(1)]
         public Boolean Situacao { get; set; }
 
     }
