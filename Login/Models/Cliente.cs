@@ -2,6 +2,7 @@
 
 namespace Login.Models
 {
+    //classe cliente
     public class Cliente
     {
         [Display(Name = "Código", Description = "Código.")]
