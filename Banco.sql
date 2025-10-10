@@ -11,7 +11,7 @@ CPF bigint not null,
 Telefone int not null,
 Senha varchar(30) not null,
 Email varchar(150) not null,
-Situacao boolean not null
+Situacao char(1) not null
 );
 
 create table tbColaborador(
