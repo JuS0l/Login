@@ -1,7 +1,15 @@
+using Login.Repositorios;
+using Login.Repositorios.Contrato;
+using Microsoft.Extensions.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
+builder.Services.AddScoped<IColaboradorRepositorio, ColaboradorRepositorio>();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
@@ -10,6 +18,8 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
+
+app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
