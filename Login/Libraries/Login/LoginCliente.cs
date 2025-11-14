@@ -16,8 +16,8 @@ namespace Login.Libraries.Login
 
         public void Login(Cliente cliente)
         {
-            string Cliente.JSONString = JsonConvert.SerializeObject(cliente);
-            _sessao Cadastrar(Key, clienteJSONString);
+            string ClienteJSONString = JsonConvert.SerializeObject(cliente);
+            _sessao.Cadastrar(Key, ClienteJSONString);
         }
 
         public Cliente getCliente()
@@ -25,6 +25,7 @@ namespace Login.Libraries.Login
             if (_sessao.Existe(Key))
             {
                 string clienteJSONString = _sessao.Consultar(Key);
+                return JsonConvert.DeserializeObject<Cliente>(clienteJSONString);
             }
             else
             {

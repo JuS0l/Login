@@ -1,22 +1,35 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace Login.Models
 {
-    public class Colaborador
-    {
-        [Display(Name = "Id", Description = "Código")]
-        public int Id { get; set; }
+        public class Colaborador
+        {
+            [Display(Name = "Código", Description = "Código.")]
+            [ValidateNever]
+            public int Id { get; set; }
 
-        [Display(Name = "Nome Completo", Description = "Nome e Sobrenome")]
-        public string Nome { get; set; }
+            [Display(Name = "Nome completo", Description = "Nome e Sobrenome.")]
+            [Required(ErrorMessage = "O nome completo é obrigatório.")]
+            public string Nome { get; set; }
 
-        [Display(Name = "Senha", Description = "Senha do Colaborador")]
-        public string Senha { get; set; }
+            [Display(Name = "Email")]
+            [EmailAddress(ErrorMessage = " O Email não é valido")]
+            [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Informe um email válido...")]
+            public string Email { get; set; }
 
-        [Display(Name = "E-mail", Description = "Email do Colaborador")]
-        public string Email { get; set; }
+            [Display(Name = "Senha")]
+            [DataType(DataType.Password)]
+            [Required(ErrorMessage = "O senha é obrigatorio")]
+            [StringLength(10, MinimumLength = 6, ErrorMessage = "A senha deve ter entre 6 e 10 caracteres")]
+            public string Senha { get; set; }
 
-        [Display(Name = "Tipo", Description = "Tipo do Colaborador")]
-        public string Tipo { get; set; }
+            /*
+             * TIPO ColaboradorTipoConstant
+            */
+            [Display(Name = "Tipo")]
+            public string? Tipo { get; set; }
+        }
+
     }
-}
+
